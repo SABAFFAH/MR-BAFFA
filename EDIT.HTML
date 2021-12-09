@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEW EMPLOYEE</title>
+
+<style>
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    
+}
+
+body{
+    font-family: serif;
+}
+
+.main{
+    font-family: serif;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 100vh;
+    display: flex;
+    background: rgb(245, 240, 240);
+    padding: 10px;
+}
+
+nav{
+    background: rgba(31, 34, 22, 0.842);
+    height: 80px;
+    width: 100%;
+    box-shadow: 0 0 15px 9px;
+}
+
+nav label{
+    color: whitesmoke;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 50px;
+    font-weight: bold;
+
+}
+
+nav ul{
+    float: right;
+    margin-left: 20px;
+    line-height: 80px;
+
+}
+
+nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+
+nav ul li a{
+ color: whitesmoke;
+ font-size: 17px;
+padding: 7px 13px;
+border-radius: 3px;
+}
+
+a:hover{
+    background: rgb(120, 150, 150);
+    transition: .5s;
+}
+
+.checkbtn{
+    font-size: 20px;
+    color: yellowgreen;
+    font-family: serif;
+    float: right;
+    margin-right: 10px;
+    cursor: pointer;
+    display: none;
+}
+
+#check{
+    display: none;
+}
+
+@media (max-width: 952px){
+    label.logo{
+        font-size: 30px;
+        padding-left: 50px;
+    }
+
+    nav ul li a{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 650px){
+    .checkbtn{
+        display: block;
+    }
+
+    ul{
+        position: fixed;
+        width: 30%;
+        height: 30vh;
+        background: linear-gradient(rgba(123, 168, 189, 0.4), rgba(26, 83, 87, 0.6),rgba(65, 94, 105, 0.4),rgba(0,0,0,0.9));
+        z-index: 1px;
+        right: -30%;
+        text-align: center;
+        transition: all .5s ease;
+        font-family: cursive;
+        border-radius: 3px;
+    }
+
+    nav ul li{
+        display: block;
+        margin: 2px;
+        line-height: 50px;
+    }
+
+    nav ul li a:hover, a.active{
+        background: none;
+        color: yellowgreen;
+        padding-left: 20px;
+    }
+
+    #check:checked ~ ul{
+        right: 0;
+    }
+}
+
+.home{
+    height: 90vh;
+    width: 65%;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.main .panel h1{
+    background-color: transparent;
+    line-height: 80px;
+    box-shadow: rgb(66, 80, 80) 10px 10px 10px;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+.main .panel .btn{
+    line-height: 40px;
+    font-size: 1rem;
+    font-family: fantasy;
+    box-shadow: rgb(66, 80, 80) 10px 10px 10px;
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.panel{
+    height: 80vh;
+    width: 30%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid rgb(71, 71, 71);
+    padding: 15px;
+    text-align: center;
+    justify-content: space-around;
+}
+
+.main .panel .btn a{
+    color: black;
+}
+
+.basic{
+    height: 90%;
+    width: 90%;
+    box-shadow: cadetblue 10px 5px 10px;
+    border: 1px solid rgba(15, 42, 44, 0.452);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.basic input{
+    height: 25px;
+    background: transparent;
+    color: black;
+    box-shadow: rgb(71, 70, 70) 5px 4px 5px;
+    
+    padding: 5px;
+    width: 90%;
+    border-radius: 3px;
+    border: rgba(15, 42, 44, 0.452) 1px solid;
+  
+
+}
+
+
+.pay button{
+    height: 25px;
+    background: rgba(15, 42, 44, 0.452);
+    border-radius: 3px;
+    border: 2px solid black;
+    box-shadow: cadetblue 5px 4px 5px;
+    color: silver;
+}
+
+.departmental textarea{
+    float: right;
+    height: 150px;
+    background: transparent;
+    color: black;
+    box-shadow: rgb(71, 70, 70) 5px 4px 5px;
+    width: fit-content;
+    padding: 5px;
+    width: 90%;
+    border-radius: 3px;
+    border: rgba(15, 42, 44, 0.452) 1px solid;
+    resize: none;
+}
+
+
+
+
+
+</style>
+
+</head>
+<body>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">MENU</label>
+        <label class="Logo">EMIS</label>
+        <ul>
+            <li><a class="active" href="{{url_for('index')}}">HOME</a></li>
+            <li><a href="{{url_for('about_us')}}">ABOUT</a></li>
+            <li><a href="{{url_for('add_employee')}}">SIGN UP</a></li>
+        </ul>
+    </nav>
+
+    <div class="main">
+        <div class="panel">
+            <h1>Navigation Panel</h1>
+            <p class="btn"> <a href="{{url_for('employee')}}">Employee Information</a> </p>
+            <p class="btn"> <a href="{{url_for('add_employee')}}">Add Employee</a> </p>
+            <p class="btn"> <a href="{{url_for('about_us')}}">About Us</a> </p>
+            <p class="btn"> <a href="{{url_for('index')}}">Home</a> </p>
+        </div>
+        
+            <form class="home" action="{{url_for( 'edit', id=Employee.ID)}}" method="POST">
+            <div class="basic" >
+
+                <input type="text" id="full_name" name="full_name" required placeholder="Full name" value="{{Employee.name}}">
+
+                <input type="text" id="Gender" name="gender" required placeholder="Gender" value="{{Employee.gender}}">
+
+                <input type="number" name="age" id="Age" required placeholder="Age" value="{{Employee.age}}">
+
+                <input type="email" name="email" id="Email" required placeholder="Email" value="{{Employee.email}}">
+
+                <input type="text" id="Address" name="address" placeholder="Address" value="{{Employee.address}}">
+
+                <input type="password" name="password" id="Password" required placeholder="Password" value="{{Employee.password}}">
+
+                <input type="text" id="Qualification" name="qualification" required placeholder="Qualificatoion" value="{{Employee.qualification}}">
+
+                <input type="date" name="date" id="Date" required placeholder="Hire Date" value="{{Employee.hire_date}}">
+
+                <input type="text" id="position" name="position" placeholder="Position" value="{{Employee.position}}">
+
+                <input type="number" id="Department_id" name="department_id" placeholder="Department_id" value="{{Employee.department}}">
+
+                <input type="tel" name="phone" id="phone" required placeholder="Phone no" value="{{Employee.phone_no}}">
+
+                <input type="text" id="State" name="state" required placeholder="State" value="{{Employee.state}}">
+
+                <button>submit</button>
+
+            </div>
+
+        </form>
+
+    
+        
+    </div>
+
+</body>
+
+</html>
